@@ -16,12 +16,44 @@ import {
   import { Link } from 'react-router-dom';
   import { useState } from 'react';
   import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+   import axios from 'axios';
+   import { useToast } from '@chakra-ui/react'
+   import Footer from "../Components/Footer"
   
   export default function Register() {
     const [showPassword, setShowPassword] = useState(false);
+    const toast = useToast()
+    const [data, setData]=useState({
+        name:"",
+        Lname:"",
+        email:"",
+        password:""
+    })
+
+    const handleChange=(e)=>{
+        const {name, value}=e.target;
+        setData({
+            ...data,
+            [name]:value
+        })
+       
+    }
+
+    const handleSubmit=()=>{
+        axios.post('http://localhost:3500/user/signup',data)
+        .then((res)=>{ toast({
+            title: 'Account created.',
+            description: res.data,
+            status: 'success',
+            duration: 9000,
+            isClosable: true,
+          })})
+        .catch((err)=>{console.log(err)})
+    }
   
     return (
-      <Flex
+      <Box>
+             <Flex
         minH={'100vh'}
         align={'center'}
         justify={'center'}
@@ -45,24 +77,24 @@ import {
                 <Box>
                   <FormControl id="firstName" isRequired>
                     <FormLabel>First Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text" name='name' placeholder='First Name' onChange={handleChange} />
                   </FormControl>
                 </Box>
                 <Box>
                   <FormControl id="lastName">
                     <FormLabel>Last Name</FormLabel>
-                    <Input type="text" />
+                    <Input type="text" name='Lname' placeholder='Last Name' onChange={handleChange} />
                   </FormControl>
                 </Box>
               </HStack>
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" />
+                <Input type="email" name='email' placeholder='Email' onChange={handleChange} />
               </FormControl>
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
-                  <Input type={showPassword ? 'text' : 'password'} />
+                  <Input type={showPassword ? 'text' : 'password'} name='password' placeholder='Password' onChange={handleChange} />
                   <InputRightElement h={'full'}>
                     <Button
                       variant={'ghost'}
@@ -77,6 +109,7 @@ import {
               <Stack spacing={10} pt={2}>
                 <Button
                   loadingText="Submitting"
+                  onClick={handleSubmit}
                   size="lg"
                   bg={'blue.400'}
                   color={'white'}
@@ -95,5 +128,7 @@ import {
           </Box>
         </Stack>
       </Flex>
+      <Footer />
+      </Box>
     );
   }
