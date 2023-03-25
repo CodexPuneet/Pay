@@ -3,6 +3,7 @@ import {BsFillCalendarDayFill,BsFileEarmarkSpreadsheetFill,BsBugFill} from "reac
 import {BiHistory} from "react-icons/bi"
 import {MdOutlineFeaturedPlayList} from "react-icons/md"
 import TCalendar from "../Components/Calender";
+import Bug from "../Components/Bug";
 import {
     Button,
     Flex,
@@ -22,9 +23,8 @@ const Task = () => {
   const [value, onChange] = React.useState(new Date());
   const [calender, setCalender]=React.useState(false)
 
-  const handleCalendar=()=>{
 
-  }
+
 
 
 console.log(calender)
@@ -50,7 +50,7 @@ console.log(calender)
            
 
             <Center>
-           <BsBugFill fontSize="40px"/>
+           <BsBugFill onClick={()=>{setCalender(!calender)}} fontSize="40px"/>
            </Center>
 
           <Center>
@@ -72,8 +72,8 @@ console.log(calender)
           </Center>
 
         </Box>
-        <Box  ml="160px"  bg='red' border='10px solid black'>
-          {calender ? <TCalendar  /> : "" }
+        <Box  ml="160px">
+          { calender ? <TCalendar  /> : <Bug  />  }
         </Box>
         
     </Box>

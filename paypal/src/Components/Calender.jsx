@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-// import "./styles.css";
 import CustomTuiCalendar from "../Components/Calender/CustomTuiCalendar";
 import CustomTuiModal from "../Components/Calender/CustomTuiModal";
 
@@ -8,17 +7,15 @@ const start = new Date();
 const end = new Date(new Date().setMinutes(start.getMinutes() + 60));
 const attendees = [
   {
-    id: "1",
-    name: "Chin"
+    id: "1",name: "Done"
   },
-  { id: "2", name: "Khanh" },
-  { id: "3", name: "Linh" },
-  { id: "4", name: "Hai" }
+  { id: "2", name: "Wait" },
+ 
 ];
 const schedules = [
   {
     id: "1",
-    title: "Mua nuoc dum",
+    title: "Bug",
     calendarId: "1",
     category: "time",
     attendees: ["Chin"],
@@ -28,7 +25,7 @@ const schedules = [
   },
   {
     id: "2",
-    title: "Di lau nha",
+    title: "Feature",
     calendarId: "2",
     category: "time",
     attendees: ["Khanh"],
@@ -38,7 +35,7 @@ const schedules = [
   },
   {
     id: "3",
-    title: "Di don phong",
+    title: "Story",
     calendarId: "3",
     category: "time",
     attendees: ["Hai"],
@@ -48,7 +45,7 @@ const schedules = [
   },
   {
     id: "4",
-    title: "Phai lam sao day",
+    title: "Attendes",
     calendarId: "4",
     category: "time",
     attendees: ["Linh"],
@@ -112,33 +109,21 @@ const colors = [
 
 const calendars = [
   {
-    id: "1",
-    name: "BPA Technical"
-  },
-  {
     id: "2",
-    name: "Aqua 2 Cleaning"
-  },
-  {
-    id: "3",
-    name: "Aqua 4 Cleaning"
+    name: "Bugs"
   },
   {
     id: "4",
-    name: "Luxury 6 Cleaning"
+    name: "Feature"
   },
+
+  
   {
-    id: "5",
-    name: "Luxury 6 Management"
+    id: "1",
+    name: "Story"
   },
-  {
-    id: "6",
-    name: "Aqua 3 Management"
-  },
-  {
-    id: "7",
-    name: "Aqua 2 Management"
-  }
+
+
 ];
 
 export default function Calender() {
@@ -235,9 +220,6 @@ export default function Calender() {
         isAllDay: event.isAllDay,
         dueDateClass: "",
         location: event.location,
-        // raw: {
-        //   class: event.raw["class"]
-        // },
         state: event.state,
         body: event.body
       };
@@ -276,11 +258,6 @@ export default function Calender() {
           showSlidebar: true,
           showMenu: true,
           useCreationPopup: false,
-          // onCreate: () => {
-          //   console.log("create that!!!");
-          //   childRef.current.getAlert();
-          // },
-          // createText: "Tao moi",
           calendars: formatCalendars,
           schedules,
           onBeforeCreateSchedule,

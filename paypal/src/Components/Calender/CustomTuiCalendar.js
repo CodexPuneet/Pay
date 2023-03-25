@@ -592,52 +592,7 @@ import React, {
                   </button>
                 </div>
               )}
-              <div id="lnb-calendars" className="lnb-calendars">
-                <div>
-                  <div className="lnb-calendars-item">
-                    <label>
-                      <input
-                        className="tui-full-calendar-checkbox-square"
-                        type="checkbox"
-                        defaultValue="all"
-                        checked={checkedCalendars.every(
-                          (element) => element.isChecked === true
-                        )}
-                        onChange={handleAllChecked}
-                      />
-                      <span />
-                      <strong>View all</strong>
-                    </label>
-                  </div>
-                </div>
-                <div id="calendarList" className="lnb-calendars-d1">
-                  {checkedCalendars.map((element, i) => {
-                    return (
-                      <div key={i} className="lnb-calendars-item">
-                        <label>
-                          <input
-                            type="checkbox"
-                            className="tui-full-calendar-checkbox-round"
-                            defaultValue={element.id}
-                            checked={element.isChecked}
-                            onChange={handleCheckChildElement}
-                          />
-                          <span
-                            style={{
-                              borderColor: element.bgColor,
-                              backgroundColor: element.isChecked
-                                ? element.bgColor
-                                : "transparent"
-                            }}
-                          />
-                          <span>{element.name}</span>
-                        </label>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-              <div className="lnb-footer">© NHN Corp.</div>
+              
             </div>
           )}
   

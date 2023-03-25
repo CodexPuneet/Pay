@@ -40,7 +40,7 @@ import {
     }
 
     const handleSubmit=()=>{
-        axios.post('http://localhost:3500/user/signup',data)
+        axios.post('https://fine-tan-panther-wrap.cyclic.app/user/signup',data)
         .then((res)=>{ toast({
             title: 'Account created.',
             description: res.data,
